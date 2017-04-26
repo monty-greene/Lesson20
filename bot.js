@@ -53,7 +53,7 @@ function gotData(err, data, response) {
 //})
 
 //POST TWEET
-//tweetIt();
+tweetIt();
 //
 //setInterval(tweetIt, 1000*45);
 
@@ -77,7 +77,7 @@ function tweetIt() {
 
 //STREAM FUNCTION
 
-followTweet;
+followTweet();
 
 function followTweet() {
 
