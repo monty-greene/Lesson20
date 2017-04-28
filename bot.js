@@ -122,9 +122,47 @@ function tweetIt2(txt){
 //
 //var exec = require('child_process').exec;
 var fs = require('fs');
+processing();
 
-
-
-function processing(eventMsg){
+function processing(){
+ console.log("uploaded image");   
+    var filename = 'pictures/image1.png';
     
+    var parameters = {
+        encoding: 'base64'
+        
+    }
+    
+    var b64 = fs.readFileSync(filename,
+    parameters);
+    
+    //i have to upload before i can tweet it
+    T.post('media/upload', {media_data: b64}, uploaded);
+    
+    
+    function uploaded(err, data, response){
+        //This is where I will tweet!
+        //My picture has a unique
+        var id = data.media_id_string;
+        var tweet = {
+            
+            status: '#ECS2017 live from node.js', 
+            media_ids: [id]
+        }
+        
+        
+        T.post('statuses/update', tweet, tweeted);
+        
+        function tweeted(err, data, response){
+            if (err){
+                console.log("Something went wrong!");
+                
+            }else{
+                console.log("It posted!");
+            
+            }
+        }
+    }
+    
+}
 
