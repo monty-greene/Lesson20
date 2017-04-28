@@ -60,7 +60,7 @@ tweetIt();
 function tweetIt() {
     var r = Math.floor(Math.random() * 100);
     var tweet = {
-        status: 'Here is the current random number ' + r + '#providencehigh #phs #ecs #2017'
+        status: 'Twitter bot 3000 is flippin lit'
     }
 
     T.post('statuses/update', tweet, gotData);
@@ -126,8 +126,8 @@ processing();
 
 function processing(){
  console.log("uploaded image");   
-    var filename = 'Pictures/Image1.jpg';
-    
+    var r = 1-10;
+    var filename = 'Pictures/Images' + r;
     var parameters = {
         encoding: 'base64'
         
