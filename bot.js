@@ -165,3 +165,10 @@ function processing(){
     
 }
 
+function uploaded(err, data, response){
+    var id = data.media_id_string;
+    var tweet = {
+        status:'Twitter bot 3000 is flippin lit',
+        media_ids:[id]
+    }
+}
