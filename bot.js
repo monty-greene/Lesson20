@@ -126,15 +126,14 @@ processing();
 
 function processing(){
  console.log("uploaded image");   
-    var filename = 'pictures/image1.png';
+    var filename = 'Pictures/Image1.jpg';
     
     var parameters = {
         encoding: 'base64'
         
     }
     
-    var b64 = fs.readFileSync(filename,
-    parameters);
+    var b64 = fs.readFileSync(filename,parameters);
     
     //i have to upload before i can tweet it
     T.post('media/upload', {media_data: b64}, uploaded);
