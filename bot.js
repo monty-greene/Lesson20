@@ -126,8 +126,8 @@ processing();
 
 function processing(){
  console.log("uploaded image");   
-    var r = 1-10;
-    var filename = 'Pictures/Images' + r;
+    var r = 2;
+    var filename = 'Pictures/Image' + r + '.jpg';
     var parameters = {
         encoding: 'base64'
         
@@ -165,10 +165,3 @@ function processing(){
     
 }
 
-function uploaded(err, data, response){
-    var id = data.media_id_string;
-    var tweet = {
-        status:'Twitter bot 3000 is flippin lit',
-        media_ids:[id]
-    }
-}
