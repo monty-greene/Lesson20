@@ -126,26 +126,25 @@ processing();
 
 function processing(){
  console.log("uploaded image");   
-    var r = 2;
+    var r = 3;
     var filename = 'Pictures/Image' + r + '.jpg';
-    var parameters = {
+    console.log(filename);
+     var parameters = {
         encoding: 'base64'
-        
     }
     
-    var b64 = fs.readFileSync(filename,parameters);
+    var b64 = fs.readFileSync(filename, parameters);
     
     //i have to upload before i can tweet it
     T.post('media/upload', {media_data: b64}, uploaded);
     
-    
     function uploaded(err, data, response){
-        //This is where I will tweet!
-        //My picture has a unique
+        //This is where I will tweet! 
+        //My picture has a unique ID
         var id = data.media_id_string;
         var tweet = {
             
-            status: '#ECS2017 live from node.js', 
+            status: '#ECS2017 live from node.js',
             media_ids: [id]
         }
         
@@ -153,15 +152,18 @@ function processing(){
         T.post('statuses/update', tweet, tweeted);
         
         function tweeted(err, data, response){
+            
             if (err){
                 console.log("Something went wrong!");
-                
             }else{
                 console.log("It posted!");
-            
             }
+            
+            
         }
+        
     }
-    
+
 }
+
 
