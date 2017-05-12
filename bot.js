@@ -60,7 +60,7 @@ tweetIt();
 function tweetIt() {
     var r = Math.floor(Math.random() * 100);
     var tweet = {
-        status: 'Twitter bot 3000 is flippin lit'
+        status: 'Here is the current random number ' + r 
     }
 
     T.post('statuses/update', tweet, gotData);
@@ -68,8 +68,7 @@ function tweetIt() {
     function gotData(err, data, response) {
         if (err) {
 
-            console.log("It posted!");
-        } else {
+            console.log("Something went wrong!");
             console.log("It posted!")
         }
     }
@@ -77,47 +76,47 @@ function tweetIt() {
 
 //STREAM FUNCTION
 
-followTweet();
-
-function followTweet() {
-
-    var stream = T.stream('user');
-    //Anything someone follows me
-    stream.on('follow', followed);
-
-    function followed(eventMsg) {
-        var name = eventMsg.source.name;
-        var screenName = eventMsg.source.screen_name;
-        tweetIt2('@' + screenName + 'how do you do?');
-        
-        
-        
-        var fs = require('fs');
-    console.log('finished image');
-    var json = JSON.stringify(eventMsg, null, 2);
-    fs.writeFile("tweet.json", json);
-}
-
-    }
-
-
-function tweetIt2(txt){
-    var tweet = {
-        status: txt
-        
-        
-    }
-    
-    T.post('statuses/update', tweet, tweeted);
-    function tweeted(err, data, response){
-        if(err){
-            console.log("Something went wrong!");
-        }else{
-            console.log("You were followed");
-        }
-    }
-}
-//var cmd = '"C:\Users\18greene.montgomery\Desktop\P5ECS\p5-ecs\P5ECS\Lesson20> C:\Users\18greene.montgomery\Downloads\processing-3.3\processing-java.exe"--sketch= "C:\Users\18greene.montgomery\Desktop\P5ECS\p5-ecs\P5ECS\Lesson20\sketch_170407a" --run'
+//followTweet();
+//
+//function followTweet() {
+//
+//    var stream = T.stream('user');
+//    //Anything someone follows me
+//    stream.on('follow', followed);
+//
+//    function followed(eventMsg) {
+//        var name = eventMsg.source.name;
+//        var screenName = eventMsg.source.screen_name;
+//        tweetIt2('@' + screenName + 'how do you do?');
+//        
+//        
+//        
+//        var fs = require('fs');
+//    console.log('finished image');
+//    var json = JSON.stringify(eventMsg, null, 2);
+//    fs.writeFile("tweet.json", json);
+//}
+//
+//    }
+//
+//
+//function tweetIt2(txt){
+//    var tweet = {
+//        status: txt
+//        
+//        
+//    }
+//    
+//    T.post('statuses/update', tweet, tweeted);
+//    function tweeted(err, data, response){
+//        if(err){
+//            console.log("Something went wrong!");
+//        }else{
+//            console.log("You were followed");
+//        }
+//    }
+//}
+////var cmd = '"C:\Users\18greene.montgomery\Desktop\P5ECS\p5-ecs\P5ECS\Lesson20> C:\Users\18greene.montgomery\Downloads\processing-3.3\processing-java.exe"--sketch= "C:\Users\18greene.montgomery\Desktop\P5ECS\p5-ecs\P5ECS\Lesson20\sketch_170407a" --run'
 //
 //
 //var exec = require('child_process').exec;
@@ -126,8 +125,14 @@ processing();
 
 function processing(){
  console.log("uploaded image");   
-    var r = 4;
-    var filename = 'Pictures/Image' + r + '.jpg';
+    var r = Math.floor(Math.random() * 10); //choose a random number 1-6
+    if (r = 10) {
+      r = Math.floor(Math.random() * 10);
+        } //choose a random number 1-10
+    if (r = 9) {
+        r = r + 1;
+    }
+    var filename ='Pictures/Image' + r + '.jpg';
     console.log(filename);
      var parameters = {
         encoding: 'base64'
@@ -144,7 +149,7 @@ function processing(){
         var id = data.media_id_string;
         var tweet = {
             
-            status: '#ECS2017 live from node.js',
+            status: 'This final is lit!',
             media_ids: [id]
         }
         
