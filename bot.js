@@ -121,7 +121,8 @@ function tweetIt() {
 //
 //var exec = require('child_process').exec;
 var fs = require('fs');
-processing();
+//processing();
+setInterval(processing, 1000*60*60);
 
 function processing(){
  console.log("uploaded image");   
